@@ -24,7 +24,7 @@ export default function StatisticsGenerator() {
         }
         if (!response.ok) {
           navigate("/login");
-          throw new Error("Response is not ok");
+          throw new Error("Response is not ok " + response.status);
         }
         return response.blob();
       })

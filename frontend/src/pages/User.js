@@ -202,11 +202,9 @@ export default function User() {
       })
       .then((data) => {
         if (data) {
-          console.log(data);
           setUserInfos((prev) => [...prev, data]);
           showSnackbar("Felhasználói adat sikeresen hozzáadva!", "green");
         }
-        console.log(data.UserInfo);
       })
       .catch((e) => {
         console.log(e);

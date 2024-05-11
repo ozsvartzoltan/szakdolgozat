@@ -50,6 +50,10 @@ export default function PasswordChange() {
       //setError({oldPasswordAgain: "Kérjük adja meg az új jelszavát!",});
       isCompleted = false;
     }
+    if (newPassword.length < 6) {
+      setError("Az új jelszó legalább 6 karakter hosszú kell legyen!", "red");
+      isCompleted = false;
+    }
 
     if (oldPassword !== oldPasswordAgain) {
       setError("A két régi jelszó nem egyezik!", "red");
@@ -71,7 +75,11 @@ export default function PasswordChange() {
         }),
       })
         .then((response) => {
-          if (response.status === 404) {
+          if (
+            response.status === 404 ||
+            response.status === 400 ||
+            response.status === 401
+          ) {
             localStorage.clear();
             navigate("/login");
             return;
@@ -187,7 +195,7 @@ export default function PasswordChange() {
             form="changePassword"
             className={`bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded `}
           >
-            Új jelszó küldése
+            Jelszó változtatása
           </button>
         </Modal.Footer>
       </Modal>

@@ -1,5 +1,4 @@
 import EditUserInfo from "./EditUserInfo";
-import { useEffect } from "react";
 
 export default function UserInfo(props) {
   function handleDeleteUserInfo() {
