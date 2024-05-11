@@ -10,6 +10,7 @@ const qs = require("qs");
 const PDFDocument = require("pdfkit");
 const { ChartJSNodeCanvas } = require("chartjs-node-canvas");
 const nodemailer = require("nodemailer");
+const ChartDataLabels = require("chartjs-plugin-datalabels");
 
 module.exports = function build(opts = {}) {
   fastify.register(require("@fastify/formbody"));
@@ -274,17 +275,34 @@ module.exports = function build(opts = {}) {
   async function generateChart(data) {
     const width = 800;
     const height = 600;
-    const chartJSNodeCanvas = new ChartJSNodeCanvas({ width, height });
+    const chartJSNodeCanvas = new ChartJSNodeCanvas({
+      width,
+      height,
+      plugins: {
+        modern: [ChartDataLabels], // Including the plugin here for usage
+      },
+    });
+
     const configuration = {
-      type: "line", // Example: Line chart
+      type: "line",
       data: {
         labels: data.labels,
         datasets: [
           {
-            label: "Mérések",
+            label: "Measurements",
             data: data.values,
             borderColor: "rgb(75, 192, 192)",
             tension: 0.1,
+            fill: false,
+            backgroundColor: "rgb(75, 192, 192)",
+            pointRadius: 5,
+            // Enable datalabels for this dataset
+            datalabels: {
+              align: "end",
+              anchor: "end",
+              color: "#000",
+              formatter: (value, context) => value,
+            },
           },
         ],
       },
@@ -294,8 +312,20 @@ module.exports = function build(opts = {}) {
             beginAtZero: true,
           },
         },
+        plugins: {
+          // Further configuration for datalabels globally
+          datalabels: {
+            color: "#555",
+            display: true,
+            font: {
+              weight: "bold",
+            },
+            formatter: (value, ctx) => value,
+          },
+        },
       },
     };
+
     return chartJSNodeCanvas.renderToBuffer(configuration);
   }
 
