@@ -1,0 +1,86 @@
+# Dependency directories
+/node_modules/
+
+# SQLite database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+/logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+/pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like Istanbul
+/coverage
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# Bower dependency directory (if used)
+/bower_components
+
+# lock files (consider committing these if you want to ensure consistent installs)
+yarn.lock
+package-lock.json
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history
+
+# Miscellaneous
+.DS_Store
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Build/output directory
+/build
+/dist
+
+# Temporary files
+/tmp
+/temp
+
+# Frontend-specific (typically React-specific)
+/build/
+/public/*.*
+!/public/favicon.ico
+!/public/index.html
+!/public/manifest.json
+!/public/robots.txt
+
+# Parcel cache (if used)
+.cache
+.parcel-cache
+
+# profiling logs
+chrome-profiler-events.json
+v8-*-log
+
+# TypeScript build info
+*.tsbuildinfo

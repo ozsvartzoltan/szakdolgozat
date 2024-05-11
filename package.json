@@ -1,0 +1,21 @@
+{
+  "name": "Szakdolgozat_OzsvartZoltan",
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "db": " cd backend && npx rimraf database.sqlite && npx sequelize db:migrate && npx sequelize db:seed:all",
+    "start": "NODE_OPTIONS=--openssl-legacy-provider react-scripts start",
+    "dev:fe": "cd frontend && npm start",
+    "dev:be": "cd backend && npx nodemon server.js",
+    "dev": "concurrently \"npm run dev:be\" \"npm run dev:fe\"",
+    "test": "cd backend && NODE_ENV=test jest",
+    "install:frontend": "cd frontend && npm install",
+    "install:backend": "cd backend && npm install",
+    "install:all": "npm run install:frontend && npm run install:backend"
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
