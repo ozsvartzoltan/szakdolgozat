@@ -46,6 +46,11 @@ export default function Register() {
       tempErrors["confirmPassword"] = "A jelszavak nem egyeznek";
     }
 
+    if (height === "") {
+      formIsValid = false;
+      tempErrors["height"] = "Az magasság mező nem lehet üres!";
+    }
+
     setErrors(tempErrors);
     return formIsValid;
   };
@@ -237,9 +242,16 @@ export default function Register() {
               name="height"
               value={height}
               onChange={(e) => setHeight(e.target.value)}
-              className="w-full p-2 text-sm border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className={`w-full p-2 text-sm border rounded-md focus:outline-none focus:ring-2 ${
+                errors.name
+                  ? "border-red-500 focus:ring-red-500"
+                  : "border-gray-300 focus:ring-blue-500"
+              }`}
               placeholder="Add meg a magasságod"
             />
+            {errors.height && (
+              <p className="text-red-500 text-xs mt-1">{errors.height}</p>
+            )}
           </div>
 
           <div className="mb-4">

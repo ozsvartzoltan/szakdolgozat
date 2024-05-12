@@ -228,7 +228,6 @@ export default function User() {
   function onClickUpdateUserData(e) {
     e.preventDefault();
 
-    // Validation to check for null or empty values
     if (
       !userName ||
       !userEmail ||
@@ -302,7 +301,11 @@ export default function User() {
       <div className="my-0">
         <h1 className="text-center pb-2">Fiókom</h1>
         <div className="max-w-md mx-auto bg-white p-6 my-3 rounded-lg shadow-lg">
-          <form onSubmit={onClickUpdateUserData} className="max-w-sm mx-auto">
+          <form
+            onSubmit={onClickUpdateUserData}
+            id="updateUserData"
+            className="max-w-sm mx-auto"
+          >
             <h5 className="block mb-1">Email</h5>
             <input
               type="email"
@@ -364,7 +367,8 @@ export default function User() {
           </form>
 
           <button
-            onClick={onClickUpdateUserData}
+            form="updateUserData"
+            type="submit"
             className="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           >
             Adatok frissítése

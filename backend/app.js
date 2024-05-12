@@ -289,7 +289,7 @@ module.exports = function build(opts = {}) {
         labels: data.labels,
         datasets: [
           {
-            label: "Measurements",
+            label: "Értékek",
             data: data.values,
             borderColor: "rgb(75, 192, 192)",
             tension: 0.1,
