@@ -12,6 +12,8 @@ export default function Register() {
   const [height, setHeight] = useState("");
   const [isMetric, setIsMetric] = useState(true);
   const [errors, setErrors] = useState({});
+  const [errorss, setErrorss] = useState();
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -81,6 +83,8 @@ export default function Register() {
             return;
           } else if (response.status === 409) {
             console.log("User already exists.");
+            setErrorss("Sikertelen regisztráció!");
+
             return;
           } else if (!response.ok) {
             console.log("Registration failed with status: ", response.status);
@@ -276,6 +280,9 @@ export default function Register() {
           >
             Regisztráció
           </button>
+          {errorss && (
+            <p className="text-red-500 text-xs mt-1 text-center">{errorss}</p>
+          )}
         </form>
         <div className="mt-4 text-center">
           <span className="text-sm text-gray-500 dark:text-gray-300">

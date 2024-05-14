@@ -34,7 +34,7 @@ export default function User() {
   const [isOnline] = useState(navigator.onLine);
 
   useEffect(() => {
-    localStorage.setItem("userName", userName);
+    localStorage.setItem("username", userName);
   }, [userName]);
 
   useEffect(() => {
@@ -54,6 +54,7 @@ export default function User() {
             },
           });
         }
+
         return response.json();
       })
       .then((data) => {
@@ -92,7 +93,7 @@ export default function User() {
           navigate("/404");
           throw new Error("Failed to delete user data");
         }
-        showSnackbar("Felhasználó adat sikeresen törölve!!", "green");
+        showSnackbar("Felhasználó adat sikeresen törölve!", "green");
       })
       .catch((e) => {
         showSnackbar("Felhasználói adat törlése sikertelen!", "red");
@@ -227,7 +228,6 @@ export default function User() {
 
   function onClickUpdateUserData(e) {
     e.preventDefault();
-
     if (
       !userName ||
       !userEmail ||
@@ -236,6 +236,7 @@ export default function User() {
       isMale === null ||
       isMetric === null
     ) {
+      //e.preventDefault();
       showSnackbar("Kérlek töltsd ki az összes mezőt!", "red");
       return;
     }
