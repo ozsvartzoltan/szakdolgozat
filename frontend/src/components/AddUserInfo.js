@@ -11,7 +11,7 @@ export default function AddUserInfo(props) {
         onClick={props.toggleShow}
         className="block mx-auto bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-2 rounded"
       >
-        + Felhasználó adat hozzáadás
+        + Felhasználói információ hozzáadás
       </button>
 
       <Modal
@@ -21,7 +21,7 @@ export default function AddUserInfo(props) {
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Új felhasználó adat</Modal.Title>
+          <Modal.Title>Új felhasználói információ</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form

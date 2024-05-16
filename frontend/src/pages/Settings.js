@@ -48,12 +48,14 @@ export default function Settings() {
   function AddNewJournalInfo(e) {
     e.preventDefault();
     if (!dataName || !dataType || !unitOfMeasurement) {
-      alert("Név, adat típusa és mértékegység mezőket kötelező kitölteni!");
+      showSnackbar(
+        "Név, adat típusa és mértékegység mezőket kötelező kitölteni!",
+        "red"
+      );
       return;
     }
 
     const newJournalInfo = {
-      UserId: 1,
       name: dataName,
       dataType: dataType,
       unitOfMeasurement: unitOfMeasurement,
@@ -81,12 +83,15 @@ export default function Settings() {
           navigate("/404");
           throw new Error("Failed to add new journal info");
         }
-        setJournalInfos([...journalInfos, newJournalInfo]);
+        return response.json();
+      })
+      .then((addedJournalInfo) => {
+        console.log(addedJournalInfo);
+        setJournalInfos((journalInfos) => [...journalInfos, addedJournalInfo]);
         showSnackbar("Naplózási adat sikeresen felvéve!", "green");
       })
       .catch((e) => {
-        console.log(e);
-        showSnackbar("Sikertelen naplózási adat felvétel!", "red");
+        showSnackbar("Sikertelen naplózási adat hozzáadás!", "red");
       });
 
     setDataName("");
@@ -142,12 +147,10 @@ export default function Settings() {
         color={snackbar.color}
       />
       <div className="min-h-screen bg-gray-50 py-10 rounded">
-        <h1 className="text-xl sm:text-2xl font-bold text-center mb-6">
-          Beállítások
-        </h1>
+        <h1 className="text-center mb-6">Naplózási adatok</h1>
         <div className="max-w-lg w-full mx-auto bg-white p-4 sm:p-6 rounded-lg shadow-lg">
           <h3 className="text-lg sm:text-xl font-semibold text-center mb-4">
-            Naplózási adat rögzítése
+            Naplózási adat felvétele
           </h3>
           <form onSubmit={AddNewJournalInfo} className="space-y-4">
             <div className="space-y-1">
@@ -163,7 +166,7 @@ export default function Settings() {
             </div>
 
             <div className="space-y-1">
-              <label className="font-medium">Adat típusa</label>
+              <label className="font-medium">Kategória típusa</label>
               <select
                 value={dataType}
                 onChange={(e) => setDataType(e.target.value)}
@@ -206,7 +209,7 @@ export default function Settings() {
               type="submit"
               className="mt-4 w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             >
-              Új naplózási adat felvétele
+              Új naplózási adat hozzáadása
             </button>
           </form>
         </div>

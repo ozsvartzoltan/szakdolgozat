@@ -27,6 +27,7 @@ const baseDatas = {
     { Name: "Pilates", unitOfMeasurement: "perc" },
     { Name: "Kosárlabda", unitOfMeasurement: "perc" },
     { Name: "Röplabda", unitOfMeasurement: "perc" },
+    { Name: "Kézilabda", unitOfMeasurement: "perc" },
   ],
   Étkezés: [
     { Name: "Bevitt kalória", unitOfMeasurement: "kalória" },

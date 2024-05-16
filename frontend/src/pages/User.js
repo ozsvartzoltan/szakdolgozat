@@ -93,10 +93,10 @@ export default function User() {
           navigate("/404");
           throw new Error("Failed to delete user data");
         }
-        showSnackbar("Felhasználó adat sikeresen törölve!", "green");
+        showSnackbar("Felhasználói információ sikeresen törölve!", "green");
       })
       .catch((e) => {
-        showSnackbar("Felhasználói adat törlése sikertelen!", "red");
+        showSnackbar("Felhasználói információ törlése sikertelen!", "red");
         console.log(e);
       });
     setUserInfos(userInfos.filter((data) => data.id !== id));
@@ -146,14 +146,14 @@ export default function User() {
           });
         }
         if (!response.ok) {
-          showSnackbar("Sikertelen felhasználói adat módosítás!", "red");
+          showSnackbar("Sikertelen felhasználói információ módosítás!", "red");
           throw new Error("Failed to update user data");
         }
-        showSnackbar("Felhasználói adat sikeresen módosítva!", "green");
+        showSnackbar("Felhasználói információ sikeresen módosítva!", "green");
         return response.json();
       })
       .catch((e) => {
-        showSnackbar("Sikertelen felhasználói adat módosítás!", "red");
+        showSnackbar("Sikertelen felhasználói információ módosítás!", "red");
         console.log(e);
       });
 
@@ -172,6 +172,7 @@ export default function User() {
 
   function AddNewUserInfo(dataName, dataValue) {
     if (dataName === "" || dataValue === "") {
+      showSnackbar("A sikeres felvételhez minden mezőt tölts ki!", "red");
       return;
     }
     const newUserInfo = {
@@ -196,7 +197,7 @@ export default function User() {
           });
         }
         if (!response.ok) {
-          showSnackbar("Sikertelen felhasználói adat hozzáadás!", "red");
+          showSnackbar("Sikertelen felhasználói információ hozzáadás!", "red");
           throw new Error("Failed to add new user data");
         }
         return response.json();
@@ -204,12 +205,12 @@ export default function User() {
       .then((data) => {
         if (data) {
           setUserInfos((prev) => [...prev, data]);
-          showSnackbar("Felhasználói adat sikeresen hozzáadva!", "green");
+          showSnackbar("Felhasználói információ sikeresen hozzáadva!", "green");
         }
       })
       .catch((e) => {
         console.log(e);
-        showSnackbar("Sikertelen felhasználói adat hozzáadás!", "red");
+        showSnackbar("Sikertelen felhasználói információ hozzáadás!", "red");
       });
     return;
   }
@@ -382,7 +383,7 @@ export default function User() {
             lineHeight: "1.6em", // Ensures there is enough vertical space for the line without touching the text.
           }}
         >
-          <span className="relative z-10 px-2">Felhasználói adatok</span>
+          <span className="relative z-10 px-2">Felhasználói információk</span>
           <div className="absolute top-1/2 left-8 transform -translate-y-1/2 w-1/3 max-w-[50%] h-[2px] bg-black rounded-md responsive-line"></div>
           <div className="absolute top-1/2 right-8 transform -translate-y-1/2 w-1/3 max-w-[50%] h-[2px] bg-black rounded-md responsive-line"></div>
         </h1>
