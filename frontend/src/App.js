@@ -81,7 +81,7 @@ export default function App() {
 
           <Route element={<LayoutWithHeaderFooter />}>
             <Route path="/user" element={<User />} />
-            <Route path="/settings" element={<Settings />} />
+            <Route path="/journalinfo" element={<Settings />} />
             <Route path="/home" element={<Home />} />
             <Route path="/logging/:year/:month/:day" element={<Logging />} />
             <Route path="/statistics" element={<Statistics />} />

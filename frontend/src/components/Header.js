@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 
 const navigation = [
   { name: "Főoldal", href: "/home" },
-  { name: "Naplózási adatok", href: "/settings" },
+  { name: "Naplózási adatok", href: "/journalinfo" },
   { name: "Fiókom", href: "/user" },
   { name: "Kijelentkezés", href: "/logout" },
 ];
