@@ -1,9 +1,24 @@
-TODO:
--welcome page
--bug:calendar: january doesnt have circle
+## Available Scripts
+
+In the project directory, you can run:
+
+### `npm run db`
+
+Clears the existing database and runs the database seeder to get a fresh start.\
+
+### `npm run dev`
+
+Runs the app in the development mode.\
+Open [http://localhost:8000](http://localhost:8000) to view it in your browser.
+
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
+
+### `npm test`
+
+Launches the test runner in the interactive watch mode.\
 
 RESOURCES
-stripe postal code for test - https://docs.stripe.com/js/element/postal_code_formatting
 stripe cards for test - https://docs.stripe.com/testing?testing-method=card-numbers
 Stripe - https://docs.stripe.com/js
 PDF generation - https://pdfkit.org/docs/getting_started.html
@@ -14,18 +29,23 @@ TEST
 JEST - https://jestjs.io/
 Supertest - https://ladjs.github.io/superagent/
 
-QUESTIONS
--teszteket kell? hogy?
--nincs php kod, mekkora gond?
--kommentek kell h legyen benne? Milyen nyelven?
+response codes: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
 
-Javítások:
--regisztrációnál emailre kód küldése
--regisztrációnál email küldése a sikerességről és az oldal működésérők
--egy kezdőlap, ami elmagyarázza az oldal működését
--elfelejtett jelszót lehet kérni offline de így nem működik
--egy napra több naplót engedélyezni
+tailwind components- https://tailwindcomponents.com/component/404-error-page
 
-npm run dev
+css buttons: https://cssbuttons.app/
 
-// "start": "NODE_OPTIONS=--openssl-legacy-provider react-scripts start",
+calendar: https://github.com/wojtekmaj/react-calendar/tree/main
+
+uuid4: https://www.npmjs.com/package/uuid
+
+RESOURCES:
+associations, migrations- https://github.com/szerveroldali/leirasok/blob/main/SequelizeAsszociaciok.md
+
+queries- https://sequelize.org/docs/v6/core-concepts/model-querying-finders/
+
+faker- https://fakerjs.dev/api/music.html
+
+sequelize (findall) - https://sequelize.org/api/v6/class/src/model.js~model#static-method-findAll
+
+fastify- https://github.com/fastify/fastify/blob/main/docs/Reference/Routes.md

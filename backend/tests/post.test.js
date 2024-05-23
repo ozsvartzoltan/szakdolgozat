@@ -21,11 +21,26 @@ describe("Post tests", () => {
       .expect(204);
   });
 
-  test("POST /login: with incorrect credentials", async () => {
-    const response = await supertest(app.server)
-      .post("/login")
-      .send({ email: "wrong@example.com", password: "wrongpassword" })
-      .expect(401);
+  test("POST /user: fail to create a user when name is empty string", async () => {
+    const userData = {
+      name: "",
+      email: "jane@example.com",
+      password: "12345678",
+      confirmedpassword: "12345678",
+      dateOfBirth: "1990-01-02",
+      isMale: false,
+      height: 165,
+      isMetric: true,
+    };
+    await supertest(app.server)
+      .post("/user")
+      .send(userData)
+      .expect(400)
+      .expect((res) => {
+        expect(res.body.message).toEqual(
+          "body/name must NOT have fewer than 1 characters"
+        );
+      });
   });
 
   test("POST /user: fail to create a user when passwords do not match", async () => {
@@ -62,17 +77,5 @@ describe("Post tests", () => {
         isMetric: true,
       })
       .expect(201);
-  });
-
-  test("POST /login: with correct credentials should return JWT tokens", async () => {
-    const response = await supertest(app.server)
-      .post("/login")
-      .send({ email: "test@gmail.com", password: "admin" })
-      .expect(200)
-      .expect((response) => {
-        expect(response.body).toHaveProperty("name");
-        expect(response.body).toHaveProperty("accessToken");
-        expect(response.body).toHaveProperty("refreshToken");
-      });
   });
 });

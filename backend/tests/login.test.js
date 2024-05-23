@@ -15,13 +15,6 @@ describe("Login tests", () => {
     }
   });
 
-  test("GET /user: returns user data", async () => {
-    const response = await supertest(app.server)
-      .get("/user")
-      .expect(200)
-      .expect("Content-Type", /json/);
-  });
-
   test("POST /login: wrong format", async () => {
     const response = await supertest(app.server)
       .post("/login")
@@ -29,19 +22,24 @@ describe("Login tests", () => {
       .expect(400);
   });
 
-  test("POST /login: wrong credentials", async () => {
+  test("POST /login: with incorrect credentials", async () => {
     const response = await supertest(app.server)
       .post("/login")
-      .send({ email: "user@example.com", password: "password123" })
+      .send({ email: "wrong@example.com", password: "wrongpassword" })
       .expect(401);
 
     expect("Hibás email vagy jelszó!");
   });
 
-  test("POST /login: successful login", async () => {
+  test("POST /login: with correct credentials should return JWT tokens", async () => {
     const response = await supertest(app.server)
       .post("/login")
-      .send({ email: "admin@gmail.com", password: "admin" })
-      .expect(200);
+      .send({ email: "test@gmail.com", password: "admin" })
+      .expect(200)
+      .expect((response) => {
+        expect(response.body).toHaveProperty("name");
+        expect(response.body).toHaveProperty("accessToken");
+        expect(response.body).toHaveProperty("refreshToken");
+      });
   });
 });

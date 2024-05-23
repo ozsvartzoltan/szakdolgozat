@@ -887,13 +887,13 @@ module.exports = function build(opts = {}) {
             "isMetric",
           ],
           properties: {
-            name: { type: "string" },
+            name: { type: "string", minLength: 1 },
             email: { type: "string", format: "email" },
             password: { type: "string" }, //minLength: 8, maxLength: 140
             confirmedpassword: { type: "string" },
             dateOfBirth: { type: "string", format: "date" },
             isMale: { type: "boolean" },
-            height: { type: "number" },
+            height: { type: "number", minLength: 1 },
             isMetric: { type: "boolean" },
           },
         },
