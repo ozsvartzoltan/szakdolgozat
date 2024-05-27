@@ -10,7 +10,7 @@ import Logout from "./pages/Logout";
 import Register from "./pages/Register";
 import Upgrade from "./pages/Upgrade";
 import Statistics from "./pages/Statistics";
-import PDF from "./pages/StatisticsGenerator";
+import StatisticsGenerator from "./pages/StatisticsGenerator";
 import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import { createContext, useEffect, useState } from "react";
 import { baseUrl } from "./global";
@@ -59,14 +59,14 @@ export default function App() {
             if (!data || !data.refreshToken) {
               window.location.href = "/404";
             }
-            localStorage.setItem("accessToken", data.accessToken);
+            localStorage.setItem("accessToken", data.n);
             localStorage.refreshToken = data.refreshToken;
           });
       }
     }
     const minute = 1000 * 60;
     refreshTokens();
-    setInterval(refreshTokens, minute * 3);
+    setInterval(refreshTokens, minute * 15);
   });
   return (
     <LogInContext.Provider value={{ stripeLoaded }}>
@@ -85,7 +85,7 @@ export default function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/logging/:year/:month/:day" element={<Logging />} />
             <Route path="/statistics" element={<Statistics />} />
-            <Route path="/pdf" element={<PDF />} />
+            <Route path="/pdf" element={<StatisticsGenerator />} />
             <Route
               path="/upgrade"
               element={

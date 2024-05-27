@@ -465,7 +465,7 @@ module.exports = function build(opts = {}) {
         return;
       }
       const accessToken = fastify.jwt.sign(user.toJSON(), {
-        expiresIn: "1m",
+        expiresIn: "15m",
       });
       const refreshToken = fastify.jwt.sign(user.toJSON(), { expiresIn: "6h" });
 
