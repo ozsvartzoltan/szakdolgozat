@@ -22,7 +22,7 @@ You may also see any lint errors in the console.
 
 Launches the test runner in the interactive watch mode.\
 
-RESOURCES
+### RESOURCES
 
 stripe cards for test - https://docs.stripe.com/testing?testing-method=card-numbers
 
