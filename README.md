@@ -19,14 +19,19 @@ You may also see any lint errors in the console.
 Launches the test runner in the interactive watch mode.\
 
 RESOURCES
+
 stripe cards for test - https://docs.stripe.com/testing?testing-method=card-numbers
+
 Stripe - https://docs.stripe.com/js
+
 PDF generation - https://pdfkit.org/docs/getting_started.html
+
 Chart - https://www.chartjs.org/docs/latest/
+
 Email - https://nodemailer.com/
 
-TEST
 JEST - https://jestjs.io/
+
 Supertest - https://ladjs.github.io/superagent/
 
 response codes: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
@@ -39,7 +44,6 @@ calendar: https://github.com/wojtekmaj/react-calendar/tree/main
 
 uuid4: https://www.npmjs.com/package/uuid
 
-RESOURCES:
 associations, migrations- https://github.com/szerveroldali/leirasok/blob/main/SequelizeAsszociaciok.md
 
 queries- https://sequelize.org/docs/v6/core-concepts/model-querying-finders/
