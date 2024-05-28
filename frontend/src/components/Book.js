@@ -295,6 +295,7 @@ export default function Book(props) {
           color={snackbar.color}
         />
         <div className="flex justify-center items-center min-h-screen bg-gray-100 rounded-lg p-8">
+          {/* Left Side */}
           <div
             className="w-full max-w-6xl bg-white shadow-lg flex flex-col md:flex-row pt-4"
             style={{ minHeight: "85vh" }}

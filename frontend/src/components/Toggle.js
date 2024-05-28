@@ -18,7 +18,6 @@ const Toggle = ({ isChecked, onChange }) => {
             isChecked ? "translate-x-6" : ""
           }`}
         >
-          {/* Toggle display logic can be more elaborate based on state */}
           {isChecked ? (
             <span className="sr-only">Enabled</span>
           ) : (

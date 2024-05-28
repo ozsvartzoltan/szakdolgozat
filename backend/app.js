@@ -113,7 +113,7 @@ module.exports = function build(opts = {}) {
 
             const chartData = prepareChartData(specificLogs);
             const chartBuffer = await generateChart(chartData);
-            doc.image(chartBuffer, 50, doc.y, { width: 400 }); // Ensure the chart is positioned correctly after the title
+            doc.image(chartBuffer, 50, doc.y, { width: 400 });
           }
         }
 
@@ -186,7 +186,6 @@ module.exports = function build(opts = {}) {
     Object.keys(stats).forEach((key) => {
       const stat = stats[key];
       stat.average = stat.total / stat.count;
-      // Assuming every day has a log for simplification, adjust as necessary
       stat.percentageDaysLogged =
         (stat.count / ((new Date() - startDate) / (24 * 3600 * 1000))) * 140;
     });
@@ -195,7 +194,7 @@ module.exports = function build(opts = {}) {
   }
 
   function addStatisticsTable(doc, stats) {
-    const startY = 250; // Y-coordinate where the table starts
+    const startY = 250; // where the table starts
     const lineSpacing = 20;
     const columnSpacing = 70;
     const initialX = 50;
@@ -256,7 +255,7 @@ module.exports = function build(opts = {}) {
   }
 
   function prepareChartData(entryLogs) {
-    // First, sort the logs by date in ascending order
+    // Sort the logs by date in ascending order
     const sortedLogs = entryLogs.sort(
       (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
     );
@@ -279,7 +278,7 @@ module.exports = function build(opts = {}) {
       width,
       height,
       plugins: {
-        modern: [ChartDataLabels], // Including the plugin here for usage
+        modern: [ChartDataLabels],
       },
     });
 
@@ -296,7 +295,6 @@ module.exports = function build(opts = {}) {
             fill: false,
             backgroundColor: "rgb(75, 192, 192)",
             pointRadius: 5,
-            // Enable datalabels for this dataset
             datalabels: {
               align: "end",
               anchor: "end",
@@ -313,7 +311,6 @@ module.exports = function build(opts = {}) {
           },
         },
         plugins: {
-          // Further configuration for datalabels globally
           datalabels: {
             color: "#555",
             display: true,
@@ -739,8 +736,6 @@ module.exports = function build(opts = {}) {
           }
         }
         reply.send(journalEntries);
-
-        // reply.send(journalEntries);
       } catch (error) {
         console.error(error);
         reply.status(500).send({ message: "Internal server error" });
@@ -1033,7 +1028,7 @@ module.exports = function build(opts = {}) {
     }
   );
 
-  //NO ilyen funkcio nincs jelenleg
+  //NO
   /* JournalInfo update */
   fastify.patch(
     "/journalinfo/:id",
@@ -1201,7 +1196,6 @@ module.exports = function build(opts = {}) {
     }
   );
 
-  //NO
   /* Delete User by its id, delete the users JournalInfo and EntryLogs */
   fastify.delete(
     "/user",
@@ -1265,7 +1259,6 @@ module.exports = function build(opts = {}) {
         },
       });
 
-      //const journalinfo = await JournalInfo.findByPk(request.params.id);
       if (!journalinfo) {
         reply.status(404).send({ message: "JournalInfo not found" });
         return;
@@ -1384,5 +1377,5 @@ module.exports = function build(opts = {}) {
     }
   );
 
-  return fastify; // Return the configured instance
+  return fastify;
 };
