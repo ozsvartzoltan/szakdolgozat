@@ -2,6 +2,10 @@
 
 In the project directory, you can run:
 
+### `npm i`
+
+Installs all necessary modules and dependencies for the project.\
+
 ### `npm run db`
 
 Clears the existing database and runs the database seeder to get a fresh start.\
