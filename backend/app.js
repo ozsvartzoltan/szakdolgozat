@@ -18,18 +18,21 @@ module.exports = function build(opts = {}) {
     secret: "secret",
   });
 
-  fastify.register(require("@fastify/cors"), (instance) => {
-    return (req, callback) => {
-      const corsOptions = {
-        origin: true,
-        credentials: true,
-      };
-
-      if (/^localhost$/m.test(req.headers.origin)) {
-        corsOptions.origin = true;
+  fastify.register(require("@fastify/cors"), {
+    origin: (origin, callback) => {
+      // Allow requests from the Vercel domain in production
+      if (
+        !origin || // Allow server-to-server requests
+        origin === "http://localhost:8000" ||
+        origin === "http://192.168.1.251:8000" ||
+        origin === "https://szakdolgozat-frontend-nine.vercel.app"
+      ) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
       }
-      callback(null, corsOptions);
-    };
+    },
+    credentials: true, // Allows cookies and headers for cross-origin requests
   });
 
   fastify.decorate("authenticate", async function (request, reply) {

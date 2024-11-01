@@ -16,6 +16,7 @@
     "install:all": "npm run install:frontend && npm run install:backend"
   },
   "dependencies": {
+    "@fastify/cors": "^10.0.1",
     "chartjs-plugin-datalabels": "^2.2.0",
     "concurrently": "^8.2.2"
   }
